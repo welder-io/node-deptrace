@@ -17,7 +17,7 @@ const tracer = new Deptrace({
   resolve: function (dep, parents) {
     // resolve an individual dependency into a more detailed form
   },
-  format: function (input, deps) {
+  format: function (input, children, tree) {
     // format a node in a dependency graph after all dependencies are resolved
   },
   concurrency: 4
@@ -83,12 +83,6 @@ const tracer = new Deptrace({
       then(request).
       get(1).
       then(JSON.parse);
-  },
-  format: function (input, deps) {
-    return promise.resolve({
-      label: input.name,
-      nodes: deps
-    });
   }
 });
 var requestPkg = require('./node_modules/request/package.json');
@@ -97,14 +91,14 @@ tracer.graph(requestPkg).then(function (graph) {
 });
 ```
 
-#### opts.format(input, deps)
+#### opts.format(input, children, allNodes)
 
-This method can be used to format the result for each node of the dependency graph after all of its direct dependencies have been resolved.
+This method can be used to format the result for each node of the graph after all of its direct dependencies have been resolved.
 
 Type: `Function`  
 Default: [see source](https://github.com/tkellen/node-deptrace/blob/master/index.js#L30-35)
 
-The default implementation (shown in the example above) formats the dependency tree to be compatible with [archy](https://github.com/substack/node-archy) (as follows):
+The default implementation formats the dependency graph to be compatible with [archy](https://github.com/substack/node-archy) (as follows):
 ```js
 {
   label: 'parent',
