@@ -27,10 +27,11 @@ Deptrace.prototype.resolve = function (dep, parents) {
 };
 
 // format a node in a dependency graph after all dependencies are resolved
-Deptrace.prototype.format = function (input, deps) {
+Deptrace.prototype.format = function (input, children, allNodes) {
   return promise.resolve({
     label: input.name,
-    nodes: deps
+    children: children,
+    nodes: allNodes
   });
 };
 
@@ -40,19 +41,21 @@ Deptrace.prototype.graph = function (input, parents) {
   }
   parents = parents.slice();
   parents.push(input);
-  return this.depsFor(input)
-    .map(function (dep) {
+  return this.depsFor(input).
+    map(function (dep) {
       return this.resolve(dep, parents);
-    }.bind(this))
-    .then(this._recurse.bind(this, input, parents));
+    }.bind(this)).
+    then(this._recurse.bind(this, input, parents));
 };
 
 Deptrace.prototype._recurse = function (input, parents, deps) {
-  return promise.resolve(deps)
-    .map(function (dep) {
+  // we lose the resolved version of each dep here because we
+  // replace each dependency with the graphed version of itself
+  return promise.resolve(deps).
+    map(function (dep) {
       return this.graph(dep, parents);
-    }.bind(this))
-    .then(this.format.bind(this, input));
+    }.bind(this)).
+    then(this.format.bind(this, input, deps));
 };
 
 Deptrace.packageJson = require('./lib/package_json');
