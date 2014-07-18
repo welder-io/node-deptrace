@@ -1,5 +1,5 @@
-v0.2.0:
-  date: 2014-07-17
+v0.2.1:
+  date: 2014-07-18
   changes:
     - Preserve resolved dependencies when formatting.
 v0.1.1:

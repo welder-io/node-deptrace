@@ -91,7 +91,7 @@ tracer.graph(requestPkg).then(function (graph) {
 });
 ```
 
-#### opts.format(input, children, allNodes)
+#### opts.format(input, nodes)
 
 This method can be used to format the result for each node of the graph after all of its direct dependencies have been resolved.
 
