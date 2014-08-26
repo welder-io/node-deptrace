@@ -55,7 +55,7 @@ tracer.graph(require('./package.json')).then(function (graph) {
 
 #### opts.resolve(dep, parents)
 
-Receives each dependency gathered by `depsFor`, as well as an array of all parent dependencies.  Must return a promise.  This method is optional and can be used to resolve a more detailed version of a dependency.  (e.g. converting the name of a dependency in package.json to the actual package.json of *that* dependency).
+Receives each dependency gathered by `depsFor`, as well as an array of all parent dependencies.  Must return a promise.  This method is optional and can be used to resolve a more detailed represenstation of a dependency.  (e.g. converting the name of a dependency in package.json to the actual package.json of *that* dependency).
 
 Type: `Function`  
 Default: [see source](https://github.com/tkellen/node-deptrace/blob/master/index.js#L25-27)
@@ -115,7 +115,6 @@ The default implementation formats the dependency graph to be compatible with [a
   ]
 }
 ```
-
 
 ### graph(input)
 
