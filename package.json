@@ -1,7 +1,7 @@
 {
   "name": "deptrace",
   "description": "Trace and format recursive dependency trees asynchronously.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "homepage": "https://github.com/gitfuse/deptrace",
   "authors": [
     "Tyler Kellen <tyler@sleekcode.net>"

@@ -1,4 +1,4 @@
-# deptrace [![Build Status](https://secure.travis-ci.org/tkellen/node-deptrace.png)](http://travis-ci.org/tkellen/node-deptrace)
+# deptrace [![Build Status](https://secure.travis-ci.org/gitfuse/deptrace.png)](http://travis-ci.org/gitfuse/deptrace)
 > Trace and format recursive dependency trees asynchronously.
 
 [![NPM](https://nodei.co/npm/deptrace.png)](https://nodei.co/npm/deptrace/)
@@ -58,7 +58,7 @@ tracer.graph(require('./package.json')).then(function (graph) {
 Receives each dependency gathered by `depsFor`, as well as an array of all parent dependencies.  Must return a promise.  This method is optional and can be used to resolve a more detailed represenstation of a dependency.  (e.g. converting the name of a dependency in package.json to the actual package.json of *that* dependency).
 
 Type: `Function`  
-Default: [see source](https://github.com/tkellen/node-deptrace/blob/master/index.js#L25-27)
+Default: [see source](https://github.com/gitfuse/deptrace/blob/master/index.js#L25-27)
 
 Here is a naive example which can trace dependencies for any npm module for which all dependencies are on github:
 ```js
@@ -96,7 +96,7 @@ tracer.graph(requestPkg).then(function (graph) {
 This method can be used to format the result for each node of the graph after all of its direct dependencies have been resolved.
 
 Type: `Function`  
-Default: [see source](https://github.com/tkellen/node-deptrace/blob/master/index.js#L30-35)
+Default: [see source](https://github.com/gitfuse/deptrace/blob/master/index.js#L30-35)
 
 The default implementation formats the dependency graph to be compatible with [archy](https://github.com/substack/node-archy) (as follows):
 ```js
