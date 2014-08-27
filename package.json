@@ -21,7 +21,7 @@
   ],
   "main": "index.js",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
   "scripts": {
     "test": "mocha -R spec test"
@@ -34,7 +34,7 @@
     "archy": "0.0.2"
   },
   "dependencies": {
-    "bluebird": "^2.2.1"
+    "bluebird": "~2.2.1"
   },
   "keywords": [
     "trace dependencies",
