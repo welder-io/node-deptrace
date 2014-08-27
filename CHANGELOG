@@ -1,3 +1,7 @@
+v0.2.2:
+  date: 2014-08-27
+  changes:
+    - Change ownership to gitfuse org.
 v0.2.1:
   date: 2014-07-18
   changes:

@@ -1,22 +1,22 @@
 {
   "name": "deptrace",
   "description": "Trace and format recursive dependency trees asynchronously.",
-  "version": "0.2.1",
-  "homepage": "https://github.com/tkellen/node-deptrace",
+  "version": "0.2.2",
+  "homepage": "https://github.com/gitfuse/deptrace",
   "authors": [
     "Tyler Kellen <tyler@sleekcode.net>"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/tkellen/node-deptrace.git"
+    "url": "git://github.com/gitfuse/deptrace.git"
   },
   "bugs": {
-    "url": "https://github.com/tkellen/node-deptrace/issues"
+    "url": "https://github.com/gitfuse/deptrace/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/tkellen/node-deptrace/blob/master/LICENSE"
+      "url": "https://github.com/gitfuse/deptrace/blob/master/LICENSE"
     }
   ],
   "main": "index.js",
