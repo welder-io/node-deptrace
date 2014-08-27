@@ -7,6 +7,9 @@ var Deptrace = module.exports = function Deptrace (opts) {
   } else {
     throw new Error('You must provide a method to find dependencies.');
   }
+  if (opts.setup) {
+    this.setup = opts.setup;
+  }
   if (opts.resolve) {
     this.resolve = opts.resolve;
   }
@@ -34,17 +37,27 @@ Deptrace.prototype.format = function (input, nodes) {
 };
 
 Deptrace.prototype.graph = function (input, parents) {
+  var ready = promise.resolve();
+  var initialCall = (arguments.length === 1);
+
   if (!parents) {
     parents = [];
-  }
-  parents = parents.slice();
-  parents.push(input);
 
-  var recurse = this._recurse(input, parents);
-  if (arguments.length === 1) {
-    recurse = recurse.then(this.format.bind(this, input));
+    if (typeof this.setup === 'function') {
+      ready = promise.resolve(this.setup());
+    }
   }
-  return recurse;
+
+  return ready.then(function () {
+    parents = parents.slice();
+    parents.push(input);
+
+    var recurse = this._recurse(input, parents);
+    if (initialCall) {
+      recurse = recurse.then(this.format.bind(this, input));
+    }
+    return recurse;
+  }.bind(this));
 };
 
 Deptrace.prototype._recurse = function (input, parents) {

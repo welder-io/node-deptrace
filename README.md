@@ -11,6 +11,9 @@ Create an instance of Deptrace to trace your dependencies.
 
 ```js
 const tracer = new Deptrace({
+  setup: function () {
+    // optional method to call before running graph
+  },
   depsFor: function (input) {
     // extract an array of dependencies from some input
   },
@@ -23,6 +26,13 @@ const tracer = new Deptrace({
   concurrency: 4
 });
 ```
+
+### opts.setup
+
+Use this to perform any setup necessary before running a graph.  May return a promise.
+
+Type: `Function`  
+Default: null
 
 #### opts.depsFor(input)
 

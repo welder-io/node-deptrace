@@ -1,3 +1,7 @@
+v0.2.4:
+  date: 2014-08-27
+  changes:
+    - Add setup method to be called before graph is run.
 v0.2.3:
   date: 2014-08-27
   changes:
